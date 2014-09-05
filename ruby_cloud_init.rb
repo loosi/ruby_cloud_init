@@ -14,6 +14,7 @@ class Ruby_cloud_init
 	@@ip_bin_path				= '/sbin/ip'
 	@@run_file					= 'cloud_init'
 	@@run_dir					= '/var/lib/bo'
+	@@systemctl 				= '/usr/bin/systemctl'
 	@@rand_str 					= [*('A'..'Z')].sample(8).join
 	@@config 					= Hash.new
 	@@network_config 			= Hash.new
@@ -42,6 +43,7 @@ class Ruby_cloud_init
 		Dir.delete("#{@@mount_path}/#{@@rand_str}")
 		FileUtils.mkdir_p("#{@@run_dir}")
 		File.write("#{@@run_dir}/#{@@run_file}", 'true')
+		`#{@@systemctl} restart network.service`
 	end
 
 	def mount_image

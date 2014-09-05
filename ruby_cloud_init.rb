@@ -64,6 +64,7 @@ class Ruby_cloud_init
 		self.write_network_file
 		self.write_route_file
 		self.set_routes
+		self.print_network_to_stdout
 	end
 
 	def parse_network_file(filename)
@@ -103,6 +104,16 @@ IPADDR_0='#{@@network_config[:ipv6][:address]}/#{@@network_config[:ipv6][:netmas
 GATEWAY_0='#{@@network_config[:ipv6][:gateway]}'
 #NETMASK_0=''\n"
 )
+	end
+
+	def print_network_to_stdout
+		puts "Deployed following config #{DateTime.now.strftime('%a %d %b %Y %H:%M')}
+IPPADDRESS_4=#{@@network_config[:ipv4][:address]}
+NETMASK_4=#{@@network_config[:ipv4][:netmask]}
+GATEWAY_4=#{@@network_config[:ipv4][:gateway]}
+IPPADDRESS_6=#{@@network_config[:ipv6][:address]}
+NETMASK_6=#{@@network_config[:ipv6][:netmask]}
+"
 	end
 
 	def set_routes

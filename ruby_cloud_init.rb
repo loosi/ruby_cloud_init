@@ -62,7 +62,6 @@ class Ruby_cloud_init
 	def update_network_settings
 		self.parse_network_file("#{@@mount_path}/#{@@rand_str}/openstack/#{@@config["network_config"]["content_path"]}")
 		self.write_network_file
-		self.set_routes
 		self.write_route_file
 		self.set_routes
 	end

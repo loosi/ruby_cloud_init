@@ -124,7 +124,7 @@ NETMASK_6=#{@@network_config[:ipv6][:netmask]}
 	def write_route_file
 		File.write("#{@@netconfig_path}/ifroute-eth0", "### Berlinonline - Cloudimage
 ##{DateTime.now.strftime('%a %d %b %Y %H:%M')}
-default via  #{@@network_config[:ipv4][:gateway]} dev eth0")
+default #{@@network_config[:ipv4][:gateway]} dev eth0")
 	end
 
 	def write_hosts
